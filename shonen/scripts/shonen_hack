@@ -1,0 +1,3 @@
+if [ "$sftype" = "hvcj" ]; then
+  mount_bind "$mountpoint/usr/share/ui/hvc/resources/strings/CHANGE_ME/strings.lng" "$mountpoint/usr/share/ui/hvc/resources/strings/jpn_ja/strings.lng"
+fi

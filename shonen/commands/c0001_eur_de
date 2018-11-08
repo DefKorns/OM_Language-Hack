@@ -1,0 +1,4 @@
+COMMAND_NAME=Translate to German
+COMMAND_TYPE=INTERNAL
+RESTART_UI=FALSE
+COMMAND_STR=sh /etc/options_menu/shonen/scripts/de_hack && usleep 50000 && hakchi reboot
