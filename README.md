@@ -1,5 +1,5 @@
 # OM_Shonen_Language-Hack
-**This modification is only for [CompCom's](https://github.com/CompCom) Options Menu.**
+**This modification is only for use with [CompCom's](https://github.com/CompCom) Options Menu.**
 
 ![English Translation](https://hakchiresources.com/wp-content/uploads/2018/09/shonen_hvcj.png)
 
