@@ -1,4 +1,0 @@
-COMMAND_NAME=Translate to Russian
-COMMAND_TYPE=INTERNAL
-RESTART_UI=FALSE
-COMMAND_STR=sh /etc/options_menu/shonen/scripts/ru_hack && usleep 50000 && hakchi reboot
