@@ -1,0 +1,36 @@
+#!/bin/sh
+
+source /etc/preinit
+script_init
+customLangURL="http://hakchicloud.com/Hakchi_Themes/options_menu/customlangs"
+addonPath="$mountpoint/etc/options_menu/shonen"
+countryCode="eur_gr"
+
+cd "$addonPath"
+
+
+echo "   ___             _   "
+echo "  / __|_ _ ___ ___| |__"
+echo " | (_ | '_/ -_) -_) / /"
+echo "  \\___|_| \\___\\___|_\\_\\"
+echo ""
+echo "Translation: Thanos"
+echo "Shonen Jump Convertion: DefKorns"
+echo ""
+echo "Checking localization files."
+wget -q --spider "$customLangURL"/$countryCode.tar.gz
+
+if [ $? -eq 0 ]; then
+echo "Downloading..."
+wget "$customLangURL"/$countryCode.tar.gz
+
+echo "Unpacking language..."
+	tar -xzf $countryCode.tar.gz && rm -f ./*.tar.gz
+    sleep 2
+	echo "Complete."
+	echo "Custom language now available and ready to use from the list."
+else
+   echo "Something may be wrong here."
+   echo "Could not find the selected theme,"
+   echo "check your internet connection. "
+fi
