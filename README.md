@@ -15,4 +15,5 @@ Yes. This hmod will work with .hsqs, too.
 
 ## Thanks to
 * bslenul
+* CompCom
 * darkdev1
