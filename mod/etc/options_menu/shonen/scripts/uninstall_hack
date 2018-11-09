@@ -35,5 +35,4 @@ unset cfg_Shonen_Francais_Hack_enable
 unset cfg_Shonen_Italiano_Hack_enable
 unset cfg_Shonen_Portugues_Hack_enable
 unset cfg_Shonen_Russian_Hack_enable
-unset cfg_Shonen_Svenska_Hack_enable
 unset cfg_Shonen_Dutch_Hack_enable
