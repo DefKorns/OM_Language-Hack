@@ -16,7 +16,9 @@ echo "Perevod na russkiy, pozhaluysta, podozhdite ..."
 
 countryCode="eur_ru"
 optionsDir="$mountpoint/etc/options_menu/shonen"
-sed -r "s/CHANGE_ME/${countryCode}/g;" "$optionsDir/scripts/shonen_hack" >"$mountpoint/etc/preinit.d/p8020_shonen_hack"
+[ -f "$preinitpath/b8024_themeselector" ] && rm -f "$preinitpath/b8024_themeselector"
+[ -f "$preinitpath/p8024_themeselector" ] && rm -f "$preinitpath/p8024_themeselector"
+sed -r "s/CHANGE_ME/${countryCode}/g;" "$optionsDir/scripts/shonen_hack" >"$preinitpath/p8020_shonen_hack"
 
 customFont="$mountpoint/media/$modname/fonts"
 	[ ! -d "$customFont" ] && customFont="$rootfs/usr/share/fonts"

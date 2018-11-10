@@ -18,7 +18,6 @@ optionsDir="$mountpoint/etc/options_menu/shonen"
 customFont="$mountpoint/media/$modname/fonts"
 	[ ! -d "$customFont" ] && customFont="$rootfs/usr/share/fonts"
 
-
 cd "$customFont" && find . -type f -not -name 'title.*' -print0 -exec rm {} \;
 [ -f "$customFont/title.backup" ] && cp -r "$customFont/title.backup" "$customFont/title.fnt" && rm -f "$customFont/title.backup"
 
@@ -35,5 +34,4 @@ unset cfg_Shonen_Francais_Hack_enable
 unset cfg_Shonen_Italiano_Hack_enable
 unset cfg_Shonen_Portugues_Hack_enable
 unset cfg_Shonen_Russian_Hack_enable
-unset cfg_Shonen_Svenska_Hack_enable
 unset cfg_Shonen_Dutch_Hack_enable

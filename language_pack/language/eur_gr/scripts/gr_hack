@@ -16,14 +16,16 @@ echo "Metafrasi sta ellinika, parakalo perimenete ..."
 
 countryCode="eur_gr"
 optionsDir="$mountpoint/etc/options_menu/shonen"
-sed -r "s/CHANGE_ME/${countryCode}/g;" "$optionsDir/scripts/custom" >"$mountpoint/etc/preinit.d/p8020_shonen_hack"
+[ -f "$preinitpath/b8024_themeselector" ] && rm -f "$preinitpath/b8024_themeselector"
+[ -f "$preinitpath/p8024_themeselector" ] && rm -f "$preinitpath/p8024_themeselector"
+sed -r "s/CHANGE_ME/${countryCode}/g;" "$optionsDir/scripts/custom" >"$preinitpath/p8020_shonen_hack"
 
 customFont="$mountpoint/media/$modname/fonts"
 	[ ! -d "$customFont" ] && customFont="$rootfs/usr/share/fonts"
 [ ! -f "$customFont/title.backup" ] && cp -r "$customFont/title.fnt" "$customFont/title.backup"
 cd "$customFont" && find . -type f -not -name 'title.*' -print0 -exec rm {} \;
 
-cd "$optionsDir/custom_languages/$countryCode/fonts" && find . -iname "*.fnt" -exec cp -r {} "$customFont" \;
+cd "$optionsDir/custom_languages/fonts" && find . -iname "*.fnt" -exec cp -r {} "$customFont" \;
 
 
 actiVe="$(grep -F " [X]" $optionsDir/commands/* | cut -d : -f 1)"
@@ -35,4 +37,4 @@ else
 	sed -r -i "1 s|$| [X]|" "$optionsDir/commands/c0010_$countryCode"
 fi
 sleep 2
-cfg_Shonen_Svenska_Hack_enable='y'
+cfg_Shonen_Greek_Hack_enable='y'
