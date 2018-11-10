@@ -18,7 +18,6 @@ optionsDir="$mountpoint/etc/options_menu/shonen"
 customFont="$mountpoint/media/$modname/fonts"
 	[ ! -d "$customFont" ] && customFont="$rootfs/usr/share/fonts"
 
-
 cd "$customFont" && find . -type f -not -name 'title.*' -print0 -exec rm {} \;
 [ -f "$customFont/title.backup" ] && cp -r "$customFont/title.backup" "$customFont/title.fnt" && rm -f "$customFont/title.backup"
 

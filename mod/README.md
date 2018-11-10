@@ -1,9 +1,3 @@
----
-Name: OM Shonen Language Hack
-Creator: Advokaten && DefKorns
-Category: UI
-Version: v1.1.0.
----
 **This modification is only for [CompCom's](https://github.com/CompCom) Options Menu.**
 
 [![English Translation](https://hakchiresources.com/wp-content/uploads/2018/09/shonen_hvcj-150x150.png)](https://hakchiresources.com/wp-content/uploads/2018/09/shonen_hvcj.png)
