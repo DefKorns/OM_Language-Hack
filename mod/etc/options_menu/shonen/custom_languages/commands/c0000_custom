@@ -1,4 +1,4 @@
 COMMAND_NAME=Get Language List
 COMMAND_TYPE=EXTERNAL
 RESTART_UI=FALSE
-COMMAND_STR=sh %script_dir%/getCustomLangs
+COMMAND_STR=sh %script_dir%/getCustomLangs &
