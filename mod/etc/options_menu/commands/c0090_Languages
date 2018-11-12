@@ -1,0 +1,4 @@
+COMMAND_NAME=Languages
+COMMAND_TYPE=EXTERNAL
+RESTART_UI=FALSE
+COMMAND_STR=sh %script_dir%/hide_cmd

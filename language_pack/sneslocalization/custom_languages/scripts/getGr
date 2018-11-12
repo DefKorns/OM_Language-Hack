@@ -11,7 +11,6 @@ echo " | (_ | '_/ -_) -_) / /"
 echo "  \\___|_| \\___\\___|_\\_\\"
 echo ""
 echo "$language Translation: ThanosRD"
-echo "Shonen Jump Convertion: DefKorns"
 echo ""
 echo "Checking localization files."
 customLangURL="http://hakchicloud.com/Hakchi_Themes/options_menu/customlangs"
@@ -21,21 +20,23 @@ customLangDir="$addonPath/custom_languages"
 
 cd "$addonPath" || exit
 
-wget -q --spider "$customLangURL"/shonen$countryCode.tar.gz
+wget -q --spider "$customLangURL"/snes$countryCode.tar.gz
 
 if [ $? -eq 0 ]; then
 	echo "Downloading..."
-	wget "$customLangURL"/shonen$countryCode.tar.gz
+	wget "$customLangURL"/snes$countryCode.tar.gz
 
 	echo "Unpacking language..."
-	tar -xzf shonen$countryCode.tar.gz && rm -f ./*.tar.gz
+	tar -xzf snes$countryCode.tar.gz && rm -f ./*.tar.gz
 	echo "Checking for $countryCode font support..."
 	if [ ! -d "$customLangDir/fonts" ]; then
 		cd "$customLangDir" || exit
 		wget "$customLangURL"/fonts.tar.gz
 		tar -xzf fonts.tar.gz && rm -f ./*.tar.gz
 	fi
+
 touch "$addonPath/commands/c0000_separator"
+
     echo "COMMAND_NAME=Translate to $language
 COMMAND_TYPE=INTERNAL
 RESTART_UI=FALSE

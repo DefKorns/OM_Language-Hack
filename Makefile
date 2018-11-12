@@ -1,11 +1,13 @@
 
-MOD_NAME := Options Menu - Shonen Jump Language Hack
+MOD_NAME := Options Menu - Language Hack
 MOD_CREATOR := DefKorns
 MOD_CATEGORY := User Interface
 MOD_VER := Release_Candidate_4
 MOD_URL=`git config --get remote.origin.url`
 GIT_COMMIT := $(shell echo "`git rev-parse --short HEAD``git diff-index --quiet HEAD -- || echo '-dirty'`")
 LANGUAGE=language_pack/language
+LANGUAGENES=language_pack/languagenes
+LANGUAGESNES=language_pack/languagesnes
 
 MOD_FILENAME := $(shell basename ${MOD_URL} .git | cut -d':' -f2)
 
@@ -13,8 +15,8 @@ hmod: out/$(MOD_FILENAME).hmod
 tar: out/$(MOD_FILENAME).tar.gz
 zip: out/$(MOD_FILENAME).zip
 
-all: hmod tar zip customlang scripts
-deploy: customlang scripts upload
+all: hmod tar zip customlang customlangsnes shonen snes
+deploy: customlang customlangsnes shonen snes upload
 
 out/$(MOD_FILENAME).hmod:
 	rm -rf out/
@@ -57,17 +59,41 @@ customlang:
 	mkdir -p out/customlangs temp/
 	find $(LANGUAGE)/. -mindepth 1 -maxdepth 1 -type d | xargs -n 1 basename | while IFS= read -r country; do \
 	rsync -a $(LANGUAGE)/$$country/ temp/ --links --delete ; \
-	cd temp/; tar -czf "../out/customlangs/"$$country".tar.gz" *; \
+	cd temp/; tar -czf "../out/customlangs/shonen"$$country".tar.gz" *; \
 	cd .. && rm -r temp/ ; \
 	done
 
-scripts:
+customlangsnes:
+	mkdir -p out/customlangs temp/
+	find $(LANGUAGESNES)/. -mindepth 1 -maxdepth 1 -type d | xargs -n 1 basename | while IFS= read -r country; do \
+	rsync -a $(LANGUAGESNES)/$$country/ temp/ --links --delete ; \
+	cd temp/; tar -czf "../out/customlangs/snes"$$country".tar.gz" *; \
+	cd .. && rm -r temp/ ; \
+	done
+
+customlangnes:
+	mkdir -p out/customlangs temp/
+	find $(LANGUAGENES)/. -mindepth 1 -maxdepth 1 -type d | xargs -n 1 basename | while IFS= read -r country; do \
+	rsync -a $(LANGUAGENES)/$$country/ temp/ --links --delete ; \
+	cd temp/; tar -czf "../out/customlangs/nes"$$country".tar.gz" *; \
+	cd .. && rm -r temp/ ; \
+	done
+
+shonen:
 	cd language_pack/localization ; \
-	tar -czf ../../out/localization.tar.gz *
+	tar -czf ../../out/shonenlocalization.tar.gz *
+
+snes:
+	cd language_pack/sneslocalization ; \
+	tar -czf ../../out/sneslocalization.tar.gz *
+
+nes:
+	cd language_pack/neslocalization ; \
+	tar -czf ../../out/neslocalization.tar.gz *
 
 upload:
 	rm -f out/$(MOD_FILENAME).*
-	rsync -e ssh --progress --exclude 'rsync*' --exclude 'src' -avzzp out/* user@host:/var/www/html/Hakchi_Themes/options_menu
+	rsync -e ssh --progress --exclude 'rsync*' --exclude 'src' -avzzp out/* defkorns@hakchicloud.com:/var/www/html/Hakchi_Themes/options_menu
 
 clean:
 	-rm -rf out/

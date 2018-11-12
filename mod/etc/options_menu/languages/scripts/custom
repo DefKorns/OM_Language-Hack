@@ -1,0 +1,14 @@
+case "$sftype" in
+nes | hvc)
+mount_bind "$mountpoint/etc/options_menu/languages/custom_languages/CHANGE_ME/strings.json" "$mountpoint/usr/share/clover-ui/resources/strings/usa_en/strings.json"
+	;;
+hvcj)
+	mount_bind "$mountpoint/etc/options_menu/languages/custom_languages/CHANGE_ME/strings.lng" "$mountpoint/usr/share/ui/hvc/resources/strings/jpn_ja/strings.lng"
+	;;
+snes)
+	if [ "$sfregion" = "jpn" ]; then
+  mount_bind "$mountpoint/etc/options_menu/languages/custom_languages/CHANGE_ME/strings.lng" "$mountpoint/usr/share/ui/shvc/resources/strings/usa_en/strings.lng"
+	fi
+  mount_bind "$mountpoint/etc/options_menu/languages/custom_languages/CHANGE_ME/strings.lng" "$mountpoint/usr/share/ui/$sftype-$sfregion/resources/strings/usa_en/strings.lng"
+	;;
+esac

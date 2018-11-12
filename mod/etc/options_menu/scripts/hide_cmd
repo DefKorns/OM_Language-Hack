@@ -1,0 +1,25 @@
+#!/bin/sh
+
+source /etc/preinit
+script_init
+
+langDir="$mountpoint/etc/options_menu/languages"
+cmdDir="$langDir/commands"
+cleanUp="$langDir/custom_languages/commands"
+
+case "$sftype" in
+hvcj)
+	[ -f "$cmdDir/_hidden" ] &&
+		mv "$cmdDir/_hidden" "$cmdDir/c0000_hidden" &&
+		cd "$cmdDir" && find . -type f -not -name 'c8887_*' -not -name 'c0000_custom' -not -name 'c0000_hidden' -not -name 'c9999_*' -print0 -exec rm {} \; && cd "$cleanUp" &&
+		find . -type f -not -name 'c8887_*' -not -name 'c0000_custom' -not -name 'c9999_*' -print0 -exec rm {} \; && rm "$preinitpath/p8024_zlanguage"
+	;;
+snes | nes)
+	[ -f "$cmdDir/c0000_hidden" ] && mv "$cmdDir/c0000_hidden" "$cmdDir/_hidden" &&
+		cd "$cmdDir" && find . -type f -not -name 'c8887_*' -not -name 'c0000_custom' -not -name 'c9999_*' -not -name '_hidden' -print0 -exec rm {} \; &&
+		cd "$cleanUp" && find . -type f -not -name 'c8887_*' -not -name 'c0000_custom' -not -name 'c9999_*' -print0 -exec rm {} \; && rm "$preinitpath/p8024_zlanguage"
+
+	;;
+esac
+
+usleep 50000 && $mountpoint/etc/options_menu/options --commandPath $cmdDir/ --scriptPath $langDir/scripts --title "Languages" &

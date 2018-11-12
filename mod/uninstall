@@ -1,4 +1,4 @@
 rm -fr "$mountpoint/etc/options_menu/commands/c0090_Shonen"
-rm -fr "$mountpoint/etc/options_menu/shonen"
+rm -fr "$mountpoint/etc/options_menu/languages"
 
 unset OM_Shonen_Language_Hack_enable

@@ -3,15 +3,14 @@
 source /etc/preinit
 script_init
 
-countryCode="eur_gr"
-language="Greek"
-echo "   ___             _   "
-echo "  / __|_ _ ___ ___| |__"
-echo " | (_ | '_/ -_) -_) / /"
-echo "  \\___|_| \\___\\___|_\\_\\"
+language="Swedish"
+countryCode="eur_swe"
+echo "  ___               _ _    _    "
+echo " / __|_ __ _____ __| (_)__| |_  "
+echo " \\__ \\ V  V / -_) _\` | (_-< ' \\ "
+echo " |___/\\_/\\_/\\___\\__,_|_/__/_||_|"
 echo ""
-echo "$language Translation: ThanosRD"
-echo "Shonen Jump Convertion: DefKorns"
+echo "$language Translation: Advokaten"
 echo ""
 echo "Checking localization files."
 customLangURL="http://hakchicloud.com/Hakchi_Themes/options_menu/customlangs"
@@ -21,14 +20,14 @@ customLangDir="$addonPath/custom_languages"
 
 cd "$addonPath" || exit
 
-wget -q --spider "$customLangURL"/shonen$countryCode.tar.gz
+wget -q --spider "$customLangURL"/snes$countryCode.tar.gz
 
 if [ $? -eq 0 ]; then
 	echo "Downloading..."
-	wget "$customLangURL"/shonen$countryCode.tar.gz
+	wget "$customLangURL"/snes$countryCode.tar.gz
 
 	echo "Unpacking language..."
-	tar -xzf shonen$countryCode.tar.gz && rm -f ./*.tar.gz
+	tar -xzf snes$countryCode.tar.gz && rm -f ./*.tar.gz
 	echo "Checking for $countryCode font support..."
 	if [ ! -d "$customLangDir/fonts" ]; then
 		cd "$customLangDir" || exit
@@ -36,6 +35,7 @@ if [ $? -eq 0 ]; then
 		tar -xzf fonts.tar.gz && rm -f ./*.tar.gz
 	fi
 touch "$addonPath/commands/c0000_separator"
+
     echo "COMMAND_NAME=Translate to $language
 COMMAND_TYPE=INTERNAL
 RESTART_UI=FALSE

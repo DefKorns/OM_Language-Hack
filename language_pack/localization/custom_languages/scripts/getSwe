@@ -15,27 +15,27 @@ echo "Shonen Jump Convertion: DefKorns"
 echo ""
 echo "Checking localization files."
 customLangURL="http://hakchicloud.com/Hakchi_Themes/options_menu/customlangs"
-addonPath="$mountpoint/etc/options_menu/shonen"
+addonPath="$mountpoint/etc/options_menu/languages"
 scriptPath="$addonPath/scripts"
 customLangDir="$addonPath/custom_languages"
 
 cd "$addonPath" || exit
 
-wget -q --spider "$customLangURL"/$countryCode.tar.gz
+wget -q --spider "$customLangURL"/shonen$countryCode.tar.gz
 
 if [ $? -eq 0 ]; then
 	echo "Downloading..."
-	wget "$customLangURL"/$countryCode.tar.gz
+	wget "$customLangURL"/shonen$countryCode.tar.gz
 
 	echo "Unpacking language..."
-	tar -xzf $countryCode.tar.gz && rm -f ./*.tar.gz
+	tar -xzf shonen$countryCode.tar.gz && rm -f ./*.tar.gz
 	echo "Checking for $countryCode font support..."
 	if [ ! -d "$customLangDir/fonts" ]; then
 		cd "$customLangDir" || exit
 		wget "$customLangURL"/fonts.tar.gz
 		tar -xzf fonts.tar.gz && rm -f ./*.tar.gz
 	fi
-
+touch "$addonPath/commands/c0000_separator"
     echo "COMMAND_NAME=Translate to $language
 COMMAND_TYPE=INTERNAL
 RESTART_UI=FALSE
