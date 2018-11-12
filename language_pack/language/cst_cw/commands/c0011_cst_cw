@@ -1,4 +1,0 @@
-COMMAND_NAME=Translate to Spurdo
-COMMAND_TYPE=INTERNAL
-RESTART_UI=FALSE
-COMMAND_STR=sh /etc/options_menu/shonen/scripts/cstcw_hack && usleep 50000 && hakchi reboot
