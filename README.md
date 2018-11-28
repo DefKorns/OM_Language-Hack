@@ -25,6 +25,8 @@ This also includes a module that allows you to play all SNES original games **WI
 
 Yes. This hmod will work with .hsqs, too.
 
+ You can find the scripts to fix the menu changing [here](https://github.com/DefKorns/OM_Shonen_Language-Hack/tree/master/loaders)
+
 ### Credits
 * Advokaten (Original HMODS and Idea)
 * DefKorns (Developer)
@@ -33,5 +35,3 @@ Yes. This hmod will work with .hsqs, too.
 * bslenul
 * CompCom
 * darkdev1
-
-
